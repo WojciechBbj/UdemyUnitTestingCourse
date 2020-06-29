@@ -8,6 +8,10 @@
     <artifactId>Udemy_unit_testing_java</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+    <junit.version>5.7.0-M1</junit.version>
+    </properties>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -16,7 +20,30 @@
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
 
     <build>
         <plugins>
