@@ -2,8 +2,7 @@ package introduction_to_unit_testing;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountTest {
 
@@ -29,6 +28,34 @@ public class AccountTest {
         assertTrue(newAccount.isActive()); //sprawdzenie czy konto zostało aktywowane po wykonaniu metody activate()
     }
 
+    @Test
+    public void thatNewNewCreatedAccountShouldNotHaveDefaultDeliveryAddressSet() {
+
+        //given
+        Account account = new Account();
+
+        //when
+        Address address = account.getDefaultDeliveryAddress();
+
+        //then
+        assertNull(address);
+
+    }
+
+    @Test
+    public void thatDefaultDeliveryAddressShouldNotBeNullAfterBeingSet() {
+
+        //given
+        Address address = new Address("DragonBall", "4");
+        Account account = new Account();
+        account.setDefaultDeliveryAddress(address);
+
+        //when
+        Address defaultAddress = account.getDefaultDeliveryAddress();
+
+        //then
+        assertNotNull(defaultAddress);
+    }
 
 
 }
