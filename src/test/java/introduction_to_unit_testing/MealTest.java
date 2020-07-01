@@ -2,6 +2,7 @@ package introduction_to_unit_testing;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MealTest {
@@ -16,7 +17,7 @@ class MealTest {
         int discountedPrice = meal.getDiscountedPrice(7);
 
         //then
-        assertEquals(30, discountedPrice);
+        assertThat(discountedPrice).isEqualTo(30);
     }
 
     @Test
@@ -27,8 +28,7 @@ class MealTest {
         Meal meal2 = meal1;
 
         //then
-        assertSame(meal1, meal2);
-
+        assertThat(meal1).isSameAs(meal2);
     }
 
     @Test
@@ -39,7 +39,7 @@ class MealTest {
         Meal meal2 = new Meal(20);
 
         //then
-        assertNotSame(meal1, meal2);
+        assertThat(meal1).isNotSameAs(meal2);
 
     }
 
@@ -51,5 +51,6 @@ class MealTest {
 
         //then
         assertEquals(meal1, meal2, "Checking if two meals are equal");
+        assertThat(meal1).isEqualTo(meal2);
     }
 }
