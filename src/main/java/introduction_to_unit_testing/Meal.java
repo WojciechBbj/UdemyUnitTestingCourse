@@ -38,6 +38,14 @@ public class Meal {
         return Objects.hash(price, name);
     }
 
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "price=" + price +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public int getPrice() {
         return price;
     }

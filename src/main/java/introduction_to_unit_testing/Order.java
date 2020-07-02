@@ -18,6 +18,13 @@ public class Order {
         meals.clear();
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "meals=" + meals +
+                '}';
+    }
+
     public List<Meal> getMeals() {
         return meals;
     }
