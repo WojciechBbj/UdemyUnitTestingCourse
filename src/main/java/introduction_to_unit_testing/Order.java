@@ -14,6 +14,10 @@ public class Order {
         meals.remove(meal);
     }
 
+    public void cancelOrder() {
+        meals.clear();
+    }
+
     public List<Meal> getMeals() {
         return meals;
     }

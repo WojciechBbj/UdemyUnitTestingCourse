@@ -1,5 +1,7 @@
 package introduction_to_unit_testing;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,6 +12,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderTest {
+    private Order order;
+
+    @BeforeEach
+    public void initializeOrder() {
+        System.out.print("Inside @BeforeEach method");
+        order = new Order();
+    }
+
+    @AfterEach
+    public void clearUp() {
+        System.out.println("Inside @AfterEach method");
+        order.cancelOrder();
+    }
 
     @Test
     public void testAssertArrayEquals() {
@@ -20,17 +35,19 @@ class OrderTest {
 
         //then
         assertArrayEquals(ints1, ints2);
+        clearUp();
     }
+
 
     @Test
     public void thatMealLeastShouldBeEmptyAfterCreationOfOrder() {
-        //given
-        Order order = new Order();
 
         //then
         assertThat(order.getMeals()).isEmpty();
         //assertThat(order.getMeals().size()).isEqualTo(0);
         //assertThat(order.getMeals()).hasSize(0);
+
+        clearUp();
     }
 
     @Test
@@ -38,7 +55,6 @@ class OrderTest {
         //given
         Meal meal = new Meal(15, "burger");
         Meal meal2 = new Meal(20, "pizza");
-        Order order = new Order();
 
         //when
         order.addMealToOrder(meal);
@@ -48,6 +64,8 @@ class OrderTest {
         assertThat(order.getMeals()).isNotEmpty();
         assertThat(order.getMeals().size()).isEqualTo(2);
         assertThat(order.getMeals()).contains(meal);
+
+        clearUp();
     }
 
     @Test
@@ -55,7 +73,6 @@ class OrderTest {
 
         //given
         Meal meal1 = new Meal(25, "pizza");
-        Order order = new Order();
 
         //when
         order.addMealToOrder(meal1);
@@ -64,6 +81,8 @@ class OrderTest {
         //then
         assertThat(order.getMeals().size()).isEqualTo(0);
         assertThat(order.getMeals()).hasSize(0);
+
+        clearUp();
     }
 
     @Test
@@ -71,7 +90,6 @@ class OrderTest {
         //given
         Meal meal1 = new Meal(25, "pizza");
         Meal meal2 = new Meal(15, "burger");
-        Order order = new Order();
 
         //when
         order.addMealToOrder(meal1);
@@ -79,6 +97,8 @@ class OrderTest {
 
         //then
         assertThat(order.getMeals()).containsExactly(meal1, meal2);
+
+        clearUp();
     }
 
     @Test
@@ -97,6 +117,7 @@ class OrderTest {
 
         assertThat(meals1).isEqualTo(meals2);
 
+        clearUp();
     }
 
 }
